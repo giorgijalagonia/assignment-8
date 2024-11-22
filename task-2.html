@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<body>
+
+<p id="output"></p>
+
+<script>
+  fetch('https://jsonplaceholder.typicode.com/posts', {
+    method: 'POST', 
+    headers: {
+      'Content-Type': 'application/json',
+      'X-HTTP-Method-Override': 'GET'
+    }
+  })
+  .then(response => response.json())
+  .then(data => {
+    const responseDiv = document.getElementById('output');
+    const postData = data[31];
+    responseDiv.textContent = JSON.stringify(postData, null, 2);
+  })
+  .catch(error => {
+    console.error('Error:', error);
+  });
+</script>
+
+</body>
+</html>
